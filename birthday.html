@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Monalisa Sahoo!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff69b4;
+            animation: bounce 2s infinite;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 20px;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+        .balloon:nth-child(2) { background-color: #00ff00; left: 20%; animation-delay: 2s; }
+        .balloon:nth-child(3) { background-color: #0000ff; left: 40%; animation-delay: 4s; }
+        .balloon:nth-child(4) { background-color: #ffff00; left: 60%; animation-delay: 6s; }
+        .balloon:nth-child(5) { background-color: #ff00ff; left: 80%; animation-delay: 8s; }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            animation: confetti-fall 5s linear infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        @keyframes float {
+            0% { bottom: -100px; }
+            100% { bottom: 100vh; }
+        }
+        @keyframes confetti-fall {
+            0% { top: -10px; transform: rotate(0deg); }
+            100% { top: 100vh; transform: rotate(360deg); }
+        }
+        /* Responsive design */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            p { font-size: 1.2em; }
+        }
+        /* Generate multiple confetti pieces */
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday Monalisa Sahoo!</h1>
+    <p>To the girl who always smiles, even on her toughest days. Your positivity lights up the world!</p>
+    
+    <div class="quote">"A warm smile is the universal language of kindness." - William Arthur Ward</div>
+    <div class="quote">"Smile in the mirror. Do that every morning and you'll start to see a big difference in your life." - Yoko Ono</div>
+    <div class="quote">"Even in the darkest days, your smile shines like a beacon of hope."</div>
+    
+    <p>Here's to another year of joy, laughter, and endless smiles! 🎉🎂🥳</p>
+    
+    <!-- Balloons -->
+    <div class="balloon" style="left: 10%; bottom: -100px;"></div>
+    <div class="balloon" style="left: 30%; bottom: -100px;"></div>
+    <div class="balloon" style="left: 50%; bottom: -100px;"></div>
+    <div class="balloon" style="left: 70%; bottom: -100px;"></div>
+    <div class="balloon" style="left: 90%; bottom: -100px;"></div>
+    
+    <!-- Confetti container -->
+    <div class="confetti-container"></div>
+
+    <script>
+        // Text-to-Speech on page load
+        window.onload = function() {
+            if ('speechSynthesis' in window) {
+                var msg = new SpeechSynthesisUtterance('Happy birthday to the most beautiful girl, Monalisa!');
+                msg.volume = 1; // Max volume
+                speechSynthesis.speak(msg);
+            } else {
+                alert('Happy birthday to the most beautiful girl, Monalisa!'); // Fallback
+            }
+            
+            // Generate confetti
+            const confettiContainer = document.querySelector('.confetti-container');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+                confettiContainer.appendChild(confetti);
+            }
+        };
+    </script>
+</body>
+</html>
